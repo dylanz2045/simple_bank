@@ -9,5 +9,8 @@ dropdb:
 sqlc:
 	docker run --rm -v "C:\Users\zdlff\zdl\Project:/src" -w /src sqlc/sqlc generate
 
-  .PHONY:  createdb dropdb sqlc  
+test:
+	go test -v -cover ./...
+
+  .PHONY:  createdb dropdb sqlc  test
 
