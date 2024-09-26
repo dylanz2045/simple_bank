@@ -1,0 +1,36 @@
+postgres:
+	docker stop postgres 
+docker container rm postgres 
+docker run --name postgres ^
+  -d ^
+  --restart=always ^
+  -v pg_data:/var/lib/postgresql/data ^
+  -v pg_archive:/var/lib/postgresql/archive ^
+  -p 5432:5432^
+  --user=postgres ^
+  -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=cst4Ever" -e POSTGRES_INITDB_ARGS ^
+  postgres:latest
+
+
+migratedown:
+  migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose down                
+migrateup:
+  migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose up
+
+dropdb:
+	docker exec -it postgres dropdb mypostgres
+
+
+
+  postgres:
+	docker stop postgres ^
+  docker container rm postgres ^ 
+  docker run --name postgres ^
+  -d ^
+  --restart=always ^
+  -v pg_data:/var/lib/postgresql/data ^
+  -v pg_archive:/var/lib/postgresql/archive ^
+  -p 5432:5432^
+  --user=postgres ^
+  -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=cst4Ever" -e POSTGRES_INITDB_ARGS ^
+  postgres:latest

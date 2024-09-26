@@ -1,0 +1,386 @@
+// Package repo management
+package repo
+
+//annotation:repo-service
+//author:{"name":"kzz","tel":"18928776452","email":"kzz@gzhu.edu.cn"}
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"github.com/tidwall/sjson"
+	"go.uber.org/zap"
+	"google.golang.org/grpc/metadata"
+	"io"
+	"mime/multipart"
+	"net/url"
+	"os"
+	"path/filepath"
+	"strings"
+	"w2w.io/cmn"
+	pb "w2w.io/w2wproto"
+)
+
+var z *zap.Logger
+
+func init() {
+	//Setup package scope variables, just like logger, db connector, configure parameters, etc.
+	cmn.PackageStarters = append(cmn.PackageStarters, func() {
+		z = cmn.GetLogger()
+		z.Info("repo zLogger settled")
+	})
+}
+
+func Enroll(author string) {
+	z.Info("repo.Enroll called")
+
+	var developer *cmn.ModuleAuthor
+	if author != "" {
+		var d cmn.ModuleAuthor
+		err := json.Unmarshal([]byte(author), &d)
+		if err != nil {
+			z.Error(err.Error())
+			return
+		}
+		developer = &d
+	}
+
+	_ = cmn.AddService(&cmn.ServeEndPoint{
+		Fn: repo,
+
+		Path: "/api/repo",
+		Name: "repo",
+
+		Developer: developer,
+		WhiteList: true,
+
+		DomainID: int64(cmn.CDomainSys),
+
+		DefaultDomain: int64(cmn.CDomainSys),
+	})
+}
+
+type FileTree struct {
+	Dir  bool   `json:"dir,omitempty"`
+	Name string `json:"name,omitempty"`
+	Size int    `json:"size,omitempty"`
+
+	CreateTime string `json:"createTime,omitempty"`
+}
+
+func dirList(targetPath string) (files []*cmn.INode, treeFiles interface{}, err error) {
+	if targetPath == "" {
+		err = fmt.Errorf("invalid targetPath")
+		z.Error(err.Error())
+		return
+	}
+
+	_, err = os.Stat(targetPath)
+
+	if errors.Is(err, os.ErrNotExist) {
+		err = fmt.Errorf("%s nonexistent", targetPath)
+		z.Error(err.Error())
+		return
+	}
+
+	if err != nil {
+		z.Error(err.Error())
+		return
+	}
+
+	// ------------------------------------------
+	err = filepath.Walk(targetPath,
+		func(path string, f os.FileInfo, err error) error {
+			if err != nil {
+				z.Error(err.Error())
+				return err
+			}
+
+			if path == targetPath {
+				return nil
+			}
+
+			node := &cmn.INode{
+				Path:       strings.Replace(path, targetPath+string(os.PathSeparator), "", 1),
+				Name:       f.Name(),
+				CreateTime: f.ModTime(),
+			}
+			if !f.IsDir() {
+				node.Size = f.Size()
+			}
+			files = append(files, node)
+
+			return nil
+		})
+
+	if err != nil {
+		return
+	}
+
+	// ------------------------------------------
+	if len(files) < 0 {
+		return
+	}
+
+	treeFiles, err = cmn.DirTree(targetPath)
+	if err != nil {
+		z.Error(err.Error())
+	}
+
+	return
+}
+
+func repo(ctx context.Context) {
+	q := cmn.GetCtxValue(ctx)
+	z.Info("---->" + cmn.FncName())
+	method := strings.ToLower(q.R.Method)
+	repoUrl := strings.Trim(q.R.URL.Query().Get("url"), " ")
+
+	var targetUrl *url.URL
+	targetUrl, q.Err = url.Parse(repoUrl)
+	if q.Err != nil {
+		q.RespErr()
+		return
+	}
+
+	task := strings.Trim(q.R.URL.Query().Get("task"), " ")
+
+	target := strings.Trim(q.R.URL.Query().Get("target"), " ")
+	targetType := strings.Trim(q.R.URL.Query().Get("targetType"), " ")
+
+	repoUser := strings.Trim(q.R.URL.Query().Get("repoUser"), " ")
+	repoCert := strings.Trim(q.R.URL.Query().Get("repoCert"), " ")
+	user := strings.Trim(q.R.URL.Query().Get("user"), " ")
+	cert := strings.Trim(q.R.URL.Query().Get("cert"), " ")
+
+	action := strings.Trim(q.R.URL.Query().Get("action"), " ")
+	comment := strings.Trim(q.R.URL.Query().Get("comment"), " ")
+
+	repoID := targetUrl.Hostname() + strings.Replace(targetUrl.Path, ".git", "", -1)
+	userPathID := cmn.B64UEncode([]byte(user))
+	targetPath := filepath.Clean(cmn.BaseRepo + string(os.PathSeparator) +
+		userPathID + string(os.PathSeparator) + repoID)
+
+	// https://github.com/asaskevich/govalidator
+	// filename/username validate regexp
+	//		/^(?!.{256,})(?!(aux|clock\$|con|nul|prn|com[1-9]|lpt[1-9])(?:$|\.))[^ ][ \.\w-$()+=[\];#@~,&amp;']+[^\. ]$/i
+	if user == "" {
+		q.Err = fmt.Errorf("please specify account")
+		z.Error(q.Err.Error())
+		q.RespErr()
+		return
+	}
+
+	var reply *pb.Reply
+
+	switch method {
+	case "put":
+		fallthrough
+	case "get":
+		if action == "delete" {
+			fp := q.R.URL.Query().Get("filepath")
+			if fp == "" {
+				q.Err = fmt.Errorf("must specify filepath")
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			if strings.Contains(fp, "..") {
+				q.Err = fmt.Errorf("path can't contains '..'")
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			fileName := filepath.Clean(cmn.BaseRepo + string(os.PathSeparator) +
+				userPathID + string(os.PathSeparator) + fp)
+			//var fileInfo os.FileInfo
+			_, q.Err = os.Stat(fileName)
+			if q.Err != nil {
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+			q.Err = os.RemoveAll(fileName)
+			if q.Err != nil {
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+			break
+		}
+
+		md := metadata.Pairs("repo-id", repoID)
+		param := fmt.Sprintf(`{
+			"url":"%s",
+			"task":"%s",
+			"user":"%s",
+			"userPathID":"%s",
+			"cert":"%s",
+			"repoUser":"%s",
+			"repoCert":"%s",
+			"action":"%s",
+			"path":"%s",
+			"target":"%s",
+		  "targetType":"%s",
+			"comment":"%s",
+			"ssh-key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDT6secmG/M0QqNCjMfPcnkkj6oP9/IG3Lnh2QQ1mYoq4ox7ep65gZa25BNdzQFtzg9nlZLlHVmvBuFJMPGFMAtA3VF8jTTsVtufBgP5d+8YU6GiyqUNLGYz2+kSK1iwSnpOV0zEyXd/lI8juiG14rh1pVhX8vJ1jqQlB62i2MzOqR1Kg+KggZKKvaAosvCJWNSXD2UA+waczcwNxKzZSH2opLRaYgb1fBH98Xx/VFp+77wA2MxeZ8QTtwSt9PKBRi75fkv/aTlH4gPoNMa2hLnlNQd6yubZTQPCW8gNIAr6JkwPP7aYHyFhdd38Wy/u2yqFEFfXA56WL63H9vOxCaR kzz@KMainStation"
+			}`,
+			repoUrl, task, user, userPathID, cert, repoUser, repoCert, action, repoID, target, targetType, comment)
+
+		task := pb.Task{
+			Name: task,
+			Data: []byte(param),
+		}
+
+		reply, q.Err = cmn.GrpcDo(&task, md)
+		if q.Err != nil {
+			q.RespErr()
+			return
+		}
+
+		if reply.Msg != nil {
+			q.Msg.Msg = *reply.Msg
+		}
+
+		if reply.Data != nil {
+			q.Msg.Data = reply.Data
+		}
+		q.Msg.Status = int(reply.Status)
+
+	case "post":
+		switch action {
+		case "upload":
+			fp := q.R.URL.Query().Get("filepath")
+			if fp == "" {
+				q.Err = fmt.Errorf("must specify filepath")
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			if strings.Contains(fp, "..") {
+				q.Err = fmt.Errorf("path can't contains '..'")
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			fileName := filepath.Clean(cmn.BaseRepo + string(os.PathSeparator) +
+				userPathID + string(os.PathSeparator) + fp)
+
+			q.Err = q.R.ParseMultipartForm(1024 * 1024 * 32)
+			if q.Err != nil {
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			formData := q.R.MultipartForm
+			files := formData.File["file"]
+			if len(files) == 0 {
+				q.Err = fmt.Errorf("empty file list")
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			maxUploadFileSize := int64(2 * 1024 * 1024)
+			if files[0].Size >= maxUploadFileSize {
+				q.Err = fmt.Errorf("文件%s的大小为%4.2f兆，超过了系统的%4.2f兆限制",
+					files[0].Filename,
+					float64(files[0].Size)/(1024*1024),
+					float64(maxUploadFileSize)/(1024*1024))
+				z.Error(q.Err.Error())
+				q.RespErr()
+				return
+			}
+
+			var src multipart.File
+			var err error
+			src, err = files[0].Open()
+			if err != nil {
+				q.Err = fmt.Errorf("第%d个文件(%s)打开时出错: %s",
+					0, files[0].Filename, err.Error())
+				z.Error(err.Error())
+				q.RespErr()
+				return
+			}
+			defer func() { _ = src.Close() }()
+
+			var dst *os.File
+			dst, err = os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0666)
+			if err != nil {
+				q.Err = fmt.Errorf("第%d个文件(%s)打开时出错: %s",
+					0, files[0].Filename, err.Error())
+				z.Error(err.Error())
+				q.RespErr()
+				return
+			}
+			defer func() { _ = dst.Close() }()
+
+			var ubiety int64
+			ubiety, err = io.Copy(dst, src)
+			if err != nil {
+				err = fmt.Errorf("后端保存第%d个文件(%s)时出错: %s",
+					0, files[0].Filename, err.Error())
+				z.Error(err.Error())
+				q.RespErr()
+				return
+			}
+
+			if ubiety != files[0].Size {
+				err = fmt.Errorf("写第%d个文件(%s)时出错: 没有写完整",
+					0, files[0].Filename)
+				z.Error(err.Error())
+				return
+			}
+
+		default:
+			q.Err = fmt.Errorf("unsupported post acction: %s", action)
+			z.Error(q.Err.Error())
+			q.RespErr()
+			return
+		}
+
+	case "delete":
+		break
+
+	default:
+		q.Err = fmt.Errorf("unsupport/implement method: %s", method)
+	}
+
+	files, treeFiles, err := dirList(targetPath)
+	if err != nil {
+		q.Err = err
+		q.RespErr()
+		return
+	}
+
+	if len(files) == 0 {
+		q.Resp()
+		return
+	}
+
+	var d string
+	d, q.Err = sjson.Set(string(q.Msg.Data), "treeFiles", treeFiles)
+	if q.Err != nil {
+		z.Error(err.Error())
+		q.RespErr()
+		return
+	}
+
+	q.Msg.Data = []byte(d)
+
+	d, q.Err = sjson.Set(string(q.Msg.Data), "files", files)
+	if q.Err != nil {
+		z.Error(err.Error())
+		q.RespErr()
+		return
+	}
+
+	q.Msg.Data = []byte(d)
+	q.Resp()
+}
