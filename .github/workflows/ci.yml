@@ -39,6 +39,13 @@ jobs:
     - name: Check out Code into the Go module diectory
       uses: actions/checkout@v2
 
+    -name: Install golang-migrate
+      run: |
+      curl -L https://github.com/golang-migrate/migrate/releases/download/$version/migrate.$os-$arch.tar.gz | tar xvz
+      sudo mv migrate.linux-amd64 /usr/bin/migrate
+      which migrate
+
+
     - name: RUN migration
       run: make migrateup
 
