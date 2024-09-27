@@ -12,5 +12,11 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-  .PHONY:  createdb dropdb sqlc  test
+migratedown:
+	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose down
+
+migrateup:
+	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose up
+
+  .PHONY:  createdb dropdb sqlc  test migrateup migratedown
 

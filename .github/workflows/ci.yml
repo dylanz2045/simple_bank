@@ -11,7 +11,23 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: cst4Ever
+          POSTGRES_DB: mypostgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
     steps:
+
+
 
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
@@ -21,6 +37,9 @@ jobs:
 
     - name: Check out Code into the Go module diectory
       uses: actions/checkout@v2
+
+    - name: RUN migration
+      run: make migrationup
 
     - name: Test
       run: make test
