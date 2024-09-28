@@ -44,7 +44,7 @@ func TestCreateAccount(t *testing.T) {
 
 }
 
-func TestUpdateAaccount(t *testing.T) {
+func TestUpdateAccount(t *testing.T) {
 	newAccount := CreateRandomAccount(t)
 	arg := UpdateAccountParams{
 		ID:      newAccount.ID,

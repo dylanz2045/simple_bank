@@ -18,5 +18,12 @@ migratedown:
 migrateup:
 	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose up
 
-  .PHONY:  createdb dropdb sqlc  test migrateup migratedown
+
+server:
+	go run main.go
+
+mock:
+	mockgen -package mockdb  -destination db/mock/store.go  Project/db/sqlc Store
+
+  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock
 
