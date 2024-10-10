@@ -13,11 +13,9 @@ type SQLStore struct {
 
 type Store interface {
 	Querier
-	//实现接口的定义,只要一个接口，实现了一个结构体的方式，就可以弄一个返回为同一个类型
-	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) 
+	//实现接口的定义,只要一个接口，实现了一个结构体的所有方法，就可以弄一个返回为同一个类型
+	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error)
 }
-
-
 
 func NewStore(db *sql.DB) Store {
 	return &SQLStore{

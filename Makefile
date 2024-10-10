@@ -14,9 +14,14 @@ test:
 
 migratedown:
 	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose down
+migratedown1:
+	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose down 1
 
 migrateup:
 	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose up
+
+migrateup1:
+	migrate -path db/migration -database "postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable" -verbose up 1
 
 
 server:
@@ -25,5 +30,5 @@ server:
 mock:
 	mockgen -package mockdb  -destination db/mock/store.go  Project/db/sqlc Store
 
-  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock
+  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock migrateup1 migratedown1
 
