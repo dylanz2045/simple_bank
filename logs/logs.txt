@@ -3,3 +3,4 @@
 {"L":"INFO","T":"2024-10-09T17:09:28.488+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-10T10:56:29.832+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-10T15:48:07.460+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-10T16:34:27.468+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
