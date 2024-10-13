@@ -60,5 +60,27 @@ func TestUpdateAccount(t *testing.T) {
 	require.Equal(t, arg.Balance, account1.Balance)
 	require.Equal(t, newAccount.Currency, account1.Currency)
 	require.WithinDuration(t, newAccount.CreatedAt, account1.CreatedAt, time.Second)
+}
 
+func TestListAccounts(t *testing.T) {
+	var lastAccount Account
+
+	for i := 0; i < 10; i++ {
+		lastAccount = CreateRandomAccount(t)
+	}
+
+	arg := ListAccountsParams{
+		Owner:  lastAccount.Owner,
+		Limit:  5,
+		Offset: 0,
+	}
+
+	accounts, err := TestQueries.ListAccounts(context.Background(), arg)
+	require.NoError(t, err)
+	require.NotEmpty(t, accounts)
+
+	for _, account := range accounts {
+		require.NotEmpty(t, account)
+		require.Equal(t, lastAccount.Owner, account.Owner)
+	}
 }

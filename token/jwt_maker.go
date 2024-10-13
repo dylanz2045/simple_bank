@@ -23,7 +23,7 @@ func NewJWTMaker(secretKey string) (Maker, error) {
 
 // 创建一个新的令牌
 func (maker *JWTMaker) CreateToken(username string, duration time.Duration) (string, error) {
-	//创建一个新的Token负载
+	//创建一个新的Token负载，用于在上下文进行传输
 	payload, err := NewPayload(username, duration)
 	if err != nil {
 		fmt.Println(err)

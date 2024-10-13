@@ -4,3 +4,23 @@
 {"L":"INFO","T":"2024-10-10T10:56:29.832+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-10T15:48:07.460+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-10T16:34:27.468+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T11:17:58.689+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T14:16:21.820+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T17:41:03.756+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:41:03.765+0800","C":"Project/main.go:37","M":"newserver failed"}
+{"L":"INFO","T":"2024-10-12T17:41:39.007+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:41:39.059+0800","C":"Project/main.go:37","M":"newserver failed"}
+{"L":"INFO","T":"2024-10-12T17:44:10.114+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:44:10.121+0800","C":"Project/main.go:37","M":"newserver failed"}
+{"L":"INFO","T":"2024-10-12T17:47:36.072+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:47:36.079+0800","C":"Project/main.go:37","M":"failed : cannot create token maker:invalid key size : must be exactly 32 characters"}
+{"L":"INFO","T":"2024-10-12T17:49:40.853+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:49:40.860+0800","C":"Project/main.go:37","M":"failed : cannot create token maker:invalid key size : must be exactly 32 characters"}
+{"L":"INFO","T":"2024-10-12T17:50:08.204+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-12T17:50:08.212+0800","C":"Project/main.go:37","M":"failed : cannot create token maker:invalid key size : must be exactly 32 characters"}
+{"L":"INFO","T":"2024-10-12T17:54:52.938+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T17:56:24.519+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T20:47:59.245+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-12T21:04:15.568+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-13T15:52:26.715+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-13T16:05:29.814+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}

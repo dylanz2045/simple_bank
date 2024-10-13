@@ -22,20 +22,23 @@ func main() {
 	}
 	config, err := utils.LoadConfig(".")
 	if err != nil {
-		logger.Error("cannot read config")
+		logger.Sugar().Errorf("cannot read config for :%s", err)
 		return
 	}
 
 	conn, err := sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
-		logger.Error("cannot connect db")
+		logger.Sugar().Errorf("cannot connect db for :%s", err)
 	}
 
 	store := db.NewStore(conn)
-	server := api.NewServer(store)
+	server, err := api.NewServer(config, store)
+	if err != nil {
+		logger.Sugar().Errorf("failed : %s", err)
+	}
 
 	err = server.Start(config.ServerAddress)
 	if err != nil {
-		logger.Error("cannot listen Server")
+		logger.Sugar().Errorf("cannot listen Server for : %s", err)
 	}
 }

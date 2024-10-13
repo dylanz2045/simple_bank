@@ -2,11 +2,13 @@ package api
 
 import (
 	db "Project/db/sqlc"
-	"database/sql"
+	"Project/token"
+	"errors"
 	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jackc/pgx/v5"
 )
 
 type transferRequest struct {
@@ -16,6 +18,7 @@ type transferRequest struct {
 	Currency      string `json:"currency" binding:"required,currency"`
 }
 
+// 转账，必须是从自己账户转到别人的账户，所以需要判断这个两个账户是否正常（并且需要符合令牌）
 func (server *Server) CreateTransfer(ctx *gin.Context) {
 	var req transferRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -23,10 +26,20 @@ func (server *Server) CreateTransfer(ctx *gin.Context) {
 		return
 	}
 
-	if !server.validAccount(ctx, req.FromAccountID, req.Currency) {
+	fromAccount, valid := server.validAccount(ctx, req.FromAccountID, req.Currency)
+	if !valid {
 		return
 	}
-	if !server.validAccount(ctx, req.ToAccountID, req.Currency) {
+	//从上下文中获取
+	authPayload := ctx.MustGet(authorizationPayloadKey).(*token.Payload)
+	if authPayload.Username != fromAccount.Owner {
+		err := errors.New("account doesn't belong to the authorization user")
+		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+		return
+	}
+
+	_, valid = server.validAccount(ctx, req.ToAccountID, req.Currency)
+	if !valid {
 		return
 	}
 
@@ -45,22 +58,22 @@ func (server *Server) CreateTransfer(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, result)
 }
 
-func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) bool {
+func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) (db.Account, bool) {
 	account, err := server.store.GetAccount(ctx, accountID)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if err == pgx.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
-			return false
+			return db.Account{}, false
 		}
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-		return false
+		return db.Account{}, false
 	}
 
 	if account.Currency != currency {
 		err := fmt.Errorf("account [%d] currency mismatch: %s vs %s", accountID, account.Currency, currency)
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
-		return false
+		return db.Account{}, false
 	}
 
-	return true
+	return account, true
 }
