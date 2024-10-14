@@ -1,4 +1,5 @@
-
+postgres:
+	docker run --name postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=cst4Ever -d postgres:14-alpine
 
 createdb:
 	docker exec -it postgres createdb --username=postgres --owner=postgres  mypostgres
@@ -30,5 +31,5 @@ server:
 mock:
 	mockgen -package mockdb  -destination db/mock/store.go  Project/db/sqlc Store
 
-  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock migrateup1 migratedown1
+  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock migrateup1 migratedown1 postgres
 
