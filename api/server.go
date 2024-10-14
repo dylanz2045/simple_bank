@@ -55,6 +55,7 @@ func (server *Server) setupRouter() {
 	authRoutes.GET("/accounts/:id", server.getAccount)
 	authRoutes.GET("/accounts", server.listAccount)
 	authRoutes.POST("/transfers", server.CreateTransfer)
+	router.POST("/tokens/renew_access", server.renewAccess)
 
 	server.router = router
 }

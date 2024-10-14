@@ -22,16 +22,17 @@ func NewJWTMaker(secretKey string) (Maker, error) {
 }
 
 // 创建一个新的令牌
-func (maker *JWTMaker) CreateToken(username string, duration time.Duration) (string, error) {
+func (maker *JWTMaker) CreateToken(username string, duration time.Duration) (string, *Payload, error) {
 	//创建一个新的Token负载，用于在上下文进行传输
 	payload, err := NewPayload(username, duration)
 	if err != nil {
 		fmt.Println(err)
-		return "", err
+		return "", payload, err
 	}
 	//创建一个token令牌
 	jwtTocker := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
-	return jwtTocker.SignedString([]byte(maker.secretKey))
+	token, err := jwtTocker.SignedString([]byte(maker.secretKey))
+	return token, payload, err
 }
 
 // 验证这个令牌是否合法

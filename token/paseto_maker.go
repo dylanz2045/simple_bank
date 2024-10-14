@@ -26,12 +26,13 @@ func NewPasetoMaker(symmertricKey string) (Maker, error) {
 
 // 创建一个新的Paseto的令牌
 // 一个作为类的方法，那个调用的实体是可以取的
-func (pateoMaker *PateoMaker) CreateToken(username string, duration time.Duration) (string, error) {
+func (pateoMaker *PateoMaker) CreateToken(username string, duration time.Duration) (string, *Payload, error) {
 	payload, err := NewPayload(username, duration)
 	if err != nil {
-		return "", err
+		return "", payload, err
 	}
-	return pateoMaker.paseto.Encrypt(pateoMaker.symmertricKey, payload, nil)
+	token,err := pateoMaker.paseto.Encrypt(pateoMaker.symmertricKey, payload, nil)
+	return token , payload , err
 }
 
 func (pateoMaker *PateoMaker) VerifyToken(token string) (*Payload, error) {
