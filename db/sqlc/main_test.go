@@ -13,7 +13,7 @@ var testStore Store
 
 const (
 	dbDriver = "postgres"
-	dbSource = "user=userdb password=cst4Ever dbname=ailanzbase host= port=5432 "
+	dbSource = "user=userdb password=cst4Ever dbname=ailanzbase host=8.134.97.76 port=5432 "
 )
 
 func TestMain(m *testing.M) {
