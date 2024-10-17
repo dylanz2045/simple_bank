@@ -1,7 +1,6 @@
 package db
 
 import (
-	"Project/utils"
 	"database/sql"
 	"log"
 	"os"
@@ -11,21 +10,20 @@ import (
 )
 
 var TestQueries *Queries
-var TestDB *sql.DB
-var err error
+
+const (
+	dbDriver = "postgres"
+	dbSource = "user=postgres password=cst4Ever dbname=postgres host=localhost port=5432 sslmode=disable"
+)
 
 func TestMain(m *testing.M) {
 
-	config, err := utils.LoadConfig("../..")
-	if err != nil {
-		log.Fatal("connot read config !")
-		return
-	}
-	TestDB, err = sql.Open(config.DBDriver, config.DBSource)
+	conn, err := sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	TestQueries = New(TestDB)
+	TestQueries = New(conn)
 	os.Exit(m.Run())
+
 }

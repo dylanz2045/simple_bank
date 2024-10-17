@@ -29,3 +29,29 @@
 {"L":"INFO","T":"2024-10-14T17:57:59.099+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-14T17:59:49.759+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-14T18:00:54.143+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T11:29:10.176+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:11:48.576+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:12:52.067+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:12:52.076+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:12:52.077+0800","C":"Project/main.go:75","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T13:27:49.199+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:27:49.208+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:27:49.209+0800","C":"Project/main.go:77","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T13:52:39.153+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:52:39.190+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T13:52:39.196+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T14:20:49.346+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T14:20:49.355+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T14:20:49.360+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T14:24:25.445+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T14:24:25.461+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T14:24:25.465+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T19:25:21.394+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T19:25:21.407+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T19:25:21.409+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T19:59:43.255+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T19:59:43.263+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T19:59:43.264+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-15T20:20:59.666+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T20:20:59.673+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-15T20:20:59.674+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
