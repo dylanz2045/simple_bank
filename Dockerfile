@@ -21,5 +21,7 @@ COPY db/migration ./migration
 # 暴露那些端口
 EXPOSE 8080
 # 执行文件
+RUN chmod +x /app/start.sh
+RUN chmod +x /app/wait-for.sh
 CMD [ "/app/main" ]
 ENTRYPOINT [ "/app/start.sh" ]
