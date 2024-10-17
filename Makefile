@@ -1,4 +1,4 @@
-DB_URL=postgresql://postgres:cst4Ever@localhost:5432/mypostgres?sslmode=disable
+DB_URL=postgresql://userdb:cst4Ever@8.134.97.76:5432/ailanzbase
 
 postgres:
 	docker run --name postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=cst4Ever -d postgres:14-alpine

@@ -55,3 +55,4 @@
 {"L":"INFO","T":"2024-10-15T20:20:59.666+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-15T20:20:59.673+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-15T20:20:59.674+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-17T16:01:40.429+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
