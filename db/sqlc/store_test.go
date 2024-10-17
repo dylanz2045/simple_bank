@@ -9,7 +9,6 @@ import (
 )
 
 func TestTransferTx(t *testing.T) {
-	store := NewStore(TestDB)
 
 	account1 := CreateRandomAccount(t)
 	account2 := CreateRandomAccount(t)
@@ -25,7 +24,7 @@ func TestTransferTx(t *testing.T) {
 		txname := fmt.Sprintf("tx %d", i+1)
 		go func() {
 			ctx := context.WithValue(context.Background(), txKey, txname)
-			result, err := store.TransferTx(ctx, TransferTxParams{
+			result, err := testStore.TransferTx(ctx, TransferTxParams{
 				FromAccountID: account1.ID,
 				ToAccountID:   account2.ID,
 				Amount:        amount,
@@ -54,7 +53,7 @@ func TestTransferTx(t *testing.T) {
 		require.NotZero(t, Transfer.ID)
 		require.NotZero(t, Transfer.CreatedAt)
 
-		_, err = store.GetTransfer(context.Background(), Transfer.ID)
+		_, err = testStore.GetTransfer(context.Background(), Transfer.ID)
 		require.NoError(t, err)
 
 		//接下来是检查这个账单目录是否有存在
@@ -65,7 +64,7 @@ func TestTransferTx(t *testing.T) {
 		require.NotZero(t, formEntry.ID)
 		require.NotZero(t, formEntry.CreatedAt)
 
-		_, err = store.GetEntry(context.Background(), formEntry.ID)
+		_, err = testStore.GetEntry(context.Background(), formEntry.ID)
 		require.NoError(t, err)
 
 		ToEntry := result.ToEntry
@@ -75,7 +74,7 @@ func TestTransferTx(t *testing.T) {
 		require.NotZero(t, ToEntry.ID)
 		require.NotZero(t, ToEntry.CreatedAt)
 
-		_, err = store.GetEntry(context.Background(), ToEntry.ID)
+		_, err = testStore.GetEntry(context.Background(), ToEntry.ID)
 		require.NoError(t, err)
 
 		formAccount := result.FromAccount
@@ -102,10 +101,10 @@ func TestTransferTx(t *testing.T) {
 		existed[k] = true
 	}
 
-	uupdateAccount1, err := TestQueries.GetAccount(context.Background(), account1.ID)
+	uupdateAccount1, err := testStore.GetAccount(context.Background(), account1.ID)
 	require.NoError(t, err)
 
-	uupdateAccount2, err := TestQueries.GetAccount(context.Background(), account2.ID)
+	uupdateAccount2, err := testStore.GetAccount(context.Background(), account2.ID)
 	require.NoError(t, err)
 
 	fmt.Println(">>After trade", uupdateAccount1.Balance, uupdateAccount2.Balance)

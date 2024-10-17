@@ -9,11 +9,11 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var TestQueries *Queries
+var testStore Store
 
 const (
 	dbDriver = "postgres"
-	dbSource = "user=postgres password=cst4Ever dbname=postgres host=localhost port=5432 sslmode=disable"
+	dbSource = "user=postgres password=cst4Ever dbname=mypostgres host=localhost port=5432 sslmode=disable"
 )
 
 func TestMain(m *testing.M) {
@@ -23,7 +23,7 @@ func TestMain(m *testing.M) {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	TestQueries = New(conn)
+	testStore = NewStore(conn)
 	os.Exit(m.Run())
 
 }
