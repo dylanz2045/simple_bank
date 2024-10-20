@@ -6,8 +6,6 @@ WORKDIR /app
 COPY . .
 # 进入到容器后执行的命名
 RUN go build -o main main.go
-RUN apk add curl
-run curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.1/migrate.linux-amd64.tar.gz | tar xvz
 
 # RUN stage
 FROM alpine:3.20

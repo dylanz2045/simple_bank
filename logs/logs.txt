@@ -56,3 +56,128 @@
 {"L":"INFO","T":"2024-10-15T20:20:59.673+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-15T20:20:59.674+0800","C":"Project/main.go:78","M":" Listening----> run FRPCServer"}
 {"L":"INFO","T":"2024-10-17T16:01:40.429+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:35:01.649+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:35:01.667+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:35:01.667+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:35:01.669+0800","C":"Project/main.go:82","M":" Listening----> run FRPCServer"}
+{"L":"INFO","T":"2024-10-19T11:35:01.669+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T11:36:51.941+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:36:51.948+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:36:51.948+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:36:51.949+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T11:36:51.949+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T11:45:24.113+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:45:24.121+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:45:24.121+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:45:24.122+0800","C":"Project/main.go:116","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T11:45:24.122+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T11:59:03.970+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:59:03.977+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:59:03.978+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T11:59:03.978+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T11:59:03.978+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T12:03:38.594+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:03:38.603+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:03:38.603+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:03:38.604+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T12:03:38.604+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T12:39:44.652+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:39:44.660+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:39:44.660+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:39:44.662+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T12:39:44.662+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T12:43:24.853+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:43:24.861+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:43:24.862+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:43:24.863+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T12:43:24.863+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T12:45:24.715+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:45:24.724+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:45:24.724+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T12:45:24.725+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T12:45:24.725+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:06:32.966+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:06:32.994+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:06:32.994+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:06:32.995+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:06:32.995+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:21:58.566+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:21:58.575+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:21:58.575+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:21:58.576+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:21:58.576+0800","C":"Project/main.go:115","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:30:07.714+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:30:07.722+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:30:07.722+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:30:07.723+0800","C":"Project/main.go:116","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:30:07.723+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:49:58.879+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:49:58.887+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:49:58.887+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:49:58.888+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:49:58.888+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:51:54.057+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:51:54.065+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:51:54.065+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:51:54.066+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:51:54.066+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T14:52:42.198+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:52:42.207+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:52:42.207+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T14:52:42.208+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T14:52:42.208+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T15:16:25.725+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:16:25.734+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:16:25.734+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:16:25.735+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T15:16:25.735+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T15:25:41.964+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:25:41.975+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:25:41.975+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:25:41.976+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T15:25:41.976+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T15:29:22.023+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:29:22.030+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:29:22.030+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:29:22.031+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T15:29:22.031+0800","C":"Project/main.go:117","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T15:33:34.611+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:33:34.618+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:33:34.619+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T15:33:34.619+0800","C":"Project/main.go:83","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T15:33:34.619+0800","C":"Project/main.go:126","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T21:23:54.438+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:23:54.456+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T21:23:54.456+0800","C":"Project/main.go:124","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T21:24:37.796+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:24:37.805+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:24:37.807+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T21:24:37.807+0800","C":"Project/main.go:124","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T21:26:10.947+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:26:10.954+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T21:26:10.954+0800","C":"Project/main.go:124","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T21:31:52.783+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:31:52.792+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T21:31:52.792+0800","C":"Project/main.go:124","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-19T21:34:50.536+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-19T21:34:50.544+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-19T21:34:50.544+0800","C":"Project/main.go:124","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T00:07:12.538+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T00:07:12.557+0800","C":"Project/main.go:82","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T00:07:12.557+0800","C":"Project/main.go:127","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T15:22:37.779+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-20T15:22:37.796+0800","C":"Project/main.go:124","M":"can not creatik fs for : statik/fs: no zip data registered --->main.go 124"}
+{"L":"INFO","T":"2024-10-20T15:22:37.797+0800","C":"Project/main.go:83","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T15:22:37.797+0800","C":"Project/main.go:133","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T15:25:26.972+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T15:25:26.980+0800","C":"Project/main.go:85","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T15:25:27.058+0800","C":"Project/main.go:135","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T15:33:09.698+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T15:33:09.708+0800","C":"Project/main.go:85","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T15:33:09.784+0800","C":"Project/main.go:135","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T16:14:29.907+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T16:14:29.925+0800","C":"Project/main.go:85","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T16:14:30.008+0800","C":"Project/main.go:137","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T16:15:49.834+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T16:15:49.841+0800","C":"Project/main.go:85","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T16:15:49.915+0800","C":"Project/main.go:137","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
