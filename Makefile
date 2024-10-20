@@ -39,8 +39,32 @@ db_schema:
 mock:
 	mockgen -package mockdb  -destination db/mock/store.go  Project/db/sqlc Store
 proto:
+	make del
 	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
     --go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
+	--openapiv2_out=doc/swagger --openapiv2_opt=allow_merge=true,merge_file_name=simple_bank \
     proto/*.proto
-  .PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock migrateup1 migratedown1 postgres db_docs db_schema proto
+	statik -src=./doc/swagger -dest=./doc
 
+evans:
+	evans --host localhost --port 9090 -r repl
+
+install:
+	go install \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+    google.golang.org/protobuf/cmd/protoc-gen-go \
+    google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+
+del: target1 target2 
+
+# 定义第一个目标
+target1:
+	del /s /q pb\*.go
+target2:
+	del /s /q doc\swagger\*.swagger.json
+
+.PHONY:  createdb dropdb sqlc  test migrateup migratedown server mock migrateup1 migratedown1 postgres db_docs db_schema proto install del
+ 
