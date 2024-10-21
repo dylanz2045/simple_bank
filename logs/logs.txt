@@ -181,3 +181,13 @@
 {"L":"INFO","T":"2024-10-20T16:15:49.834+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
 {"L":"INFO","T":"2024-10-20T16:15:49.841+0800","C":"Project/main.go:85","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
 {"L":"INFO","T":"2024-10-20T16:15:49.915+0800","C":"Project/main.go:137","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T17:14:52.647+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T17:15:38.442+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"ERROR","T":"2024-10-20T17:15:38.487+0800","C":"Project/main.go:71","M":"can not run migration up : no change --->main.go 64"}
+{"L":"INFO","T":"2024-10-20T17:15:38.487+0800","C":"Project/main.go:73","M":"db migrated successful"}
+{"L":"INFO","T":"2024-10-20T17:15:38.488+0800","C":"Project/main.go:107","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T17:15:38.575+0800","C":"Project/main.go:159","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
+{"L":"INFO","T":"2024-10-20T17:19:29.892+0800","C":"utils/log.go:42","M":"-------> Zaplog  init successful "}
+{"L":"INFO","T":"2024-10-20T17:19:29.939+0800","C":"Project/main.go:73","M":"db migrated successful"}
+{"L":"INFO","T":"2024-10-20T17:19:29.940+0800","C":"Project/main.go:107","M":"start GRPC server at %s----> run GRPCServer[::]:9090"}
+{"L":"INFO","T":"2024-10-20T17:19:30.025+0800","C":"Project/main.go:159","M":"start HTTP gateway server at %s----> run GatewayServer[::]:8080"}
