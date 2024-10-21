@@ -15,6 +15,9 @@ import (
 
 	_ "Project/doc/statik"
 
+	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	_ "github.com/lib/pq"
 	"github.com/rakyll/statik/fs"
@@ -47,8 +50,27 @@ func main() {
 
 	store := db.NewStore(conn)
 
+	runDBMigration(config.MigrationURL, config.DBSource)
+
 	go runGatewayServer(config, store)
 	runGrpcServer(config, store)
+
+}
+
+func runDBMigration(migrationURL string, dbSource string) {
+	logger := zap.L()
+	if logger == nil {
+		fmt.Println("logger is nil while it's shouldn't")
+		os.Exit(-1)
+	}
+	migration, err := migrate.New(migrationURL, dbSource)
+	if err != nil {
+		logger.Sugar().Errorf("can not create new migrate instance : %s --->main.go 61", err)
+	}
+	if err = migration.Up(); err != nil && err != migrate.ErrNoChange {
+		logger.Sugar().Errorf("can not run migration up : %s --->main.go 64", err)
+	}
+	logger.Info("db migrated successful")
 
 }
 func runGinServer(config utils.Config, store db.Store) {

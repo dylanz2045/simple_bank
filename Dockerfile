@@ -11,15 +11,14 @@ RUN go build -o main main.go
 FROM alpine:3.20
 WORKDIR /app
 COPY --from=builder /app/main .
-COPY --from=builder /app/migrate ./migrate
 COPY app.env . 
-COPY start.sh . 
-COPY wait-for.sh . 
-COPY db/migration ./migration
+COPY start.sh .
+COPY wait-for.sh .
+COPY db/migration ./db/migration
 # 暴露那些端口
-EXPOSE 8080
+EXPOSE 8080 
 # 执行文件
-RUN chmod +x /app/start.sh
 RUN chmod +x /app/wait-for.sh
+RUN chmod +x /app/start.sh
 CMD [ "/app/main" ]
 ENTRYPOINT [ "/app/start.sh" ]
