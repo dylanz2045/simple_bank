@@ -14,6 +14,7 @@ func HashedPassword(password string) (string, error) {
 	return string(hashedPassword), nil
 }
 
+// 检查此时的密码与哈希密码是否相同
 func CheckPassword(password string, hashedPassword string) error {
 	return bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
 }

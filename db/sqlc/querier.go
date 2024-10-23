@@ -38,6 +38,7 @@ type Querier interface {
 	ListTransfersByFromAccount(ctx context.Context, fromAccountID int64) ([]Transfer, error)
 	ListTransfersByToAccount(ctx context.Context, toAccountID int64) ([]Transfer, error)
 	UpdateAccount(ctx context.Context, arg UpdateAccountParams) (Account, error)
+	UpdateUser(ctx context.Context, arg UpdateUserParams) (User, error)
 }
 
 var _ Querier = (*Queries)(nil)
